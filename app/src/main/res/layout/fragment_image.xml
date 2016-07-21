@@ -5,6 +5,7 @@
     tools:context="com.jejunet.hellofragment.ImageFragment">
 
     <ImageView
+        android:id="@+id/image1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/ice_skate"/>

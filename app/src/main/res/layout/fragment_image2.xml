@@ -5,6 +5,7 @@
     tools:context="com.jejunet.hellofragment.Image2Fragment">
 
     <ImageView
+        android:id="@+id/image2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/car"/>

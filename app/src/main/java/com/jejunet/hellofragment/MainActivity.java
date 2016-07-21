@@ -12,17 +12,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ImageFragment.OnImageSelectedListener, Image2Fragment.OnCarSelectedListener{
     @BindView(R.id.content_frame) FrameLayout contentFrame;
     @OnClick(R.id.fragment1_btn) void onClickButton1() {
-        Toast.makeText(this, "Button1", Toast.LENGTH_SHORT).show();
         ImageFragment imageFragment = ImageFragment.newInstance();
         addFragmentToContentFrame(imageFragment);
     }
 
     @OnClick(R.id.fragment2_btn) void onClickButton2() {
-        // TODO button2
-        Toast.makeText(this, "Button2", Toast.LENGTH_SHORT).show();
         Image2Fragment image2Fragment = Image2Fragment.newInstance();
         addFragmentToContentFrame(image2Fragment);
     }
@@ -37,8 +34,18 @@ public class MainActivity extends AppCompatActivity {
     private void addFragmentToContentFrame(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.content_frame, fragment);
+        fragmentTransaction.replace(R.id.content_frame, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onImageSelected(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onCarSelected() {
+        Toast.makeText(this, "CAR IMAGE!!!", Toast.LENGTH_SHORT).show();
     }
 }
